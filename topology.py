@@ -28,6 +28,17 @@ def fetch_topology(url, address):
         except KeyboardInterrupt:
             conn.close()
             break
+            
+    broker_address = sender.connection.transport._transport.get_connection().get_peer_address()
+
+    # Send a message to the queue
+    message = Message(content="Hello, world!")
+    sender.send(message)
+
+    # Print the broker address
+    print("Active broker:", broker_address)
+    
+    
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AMQ Cluster Topology Fetcher")
