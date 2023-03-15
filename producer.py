@@ -31,23 +31,26 @@ class Producer(MessagingHandler):
     def on_start(self, event):
         self.sender = self.connect_to_broker(event)
 
-    def on_sendable(self, event):
-        while self.sent_messages < self.num_messages:
-            try:
-                msg = Message(body=f"Hello World! Message {self.sent_messages + 1}")
-                event.sender.send(msg)
-                print(f"Message sent to broker {self.connected_broker}: {msg.body}")
-                self.sent_messages += 1
-                time.sleep(self.delay)
-            except Exception as e:
-                print(f"Failed to send message: {e}")
-                self.sender.close()
-                self.sender = self.connect_to_broker(event)
+def on_sendable(self, event):
+    while self.sent_messages < self.num_messages:
+        try:
+            current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+            msg_body = f"Hello World! Message {self.sent_messages + 1} at {current_time}"
+            msg = Message(body=msg_body)
+            event.sender.send(msg)
+            print(f"Message sent to broker {self.connected_broker}: {msg.body}")
+            self.sent_messages += 1
+            time.sleep(self.delay)
+        except Exception as e:
+            print(f"Failed to send message: {e}")
+            self.sender.close()
+            self.sender = self.connect_to_broker(event)
 
-                if self.sender is None:
-                    break
-        else:
-            event.sender.close()
+            if self.sender is None:
+                break
+    else:
+        event.sender.close()
+
 
 # ...
 
