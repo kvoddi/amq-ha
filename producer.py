@@ -1,8 +1,11 @@
 import sys
 import time
+import argparse
+from datetime import datetime
 from proton import Message
 from proton.handlers import MessagingHandler
 from proton.reactor import Container
+
 
 class Producer(MessagingHandler):
     def __init__(self, urls, address, num_messages, delay):
@@ -55,17 +58,15 @@ def on_sendable(self, event):
 # ...
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="AMQ Failure Testing Producer")
+    parser.add_argument("-a", "--address", required=True, help="Address (queue) to send messages to")
+    parser.add_argument("-n", "--num_messages", type=int, default=100, help="Number of messages to send")
+    parser.add_argument("-d", "--delay", type=float, default=0.5, help="Delay between messages (in seconds)")
+
+    args = parser.parse_args()
+
     broker_urls = ["amqp://localhost:5672", "amqp://localhost:5673"]
-    address = "test_queue"
-    num_messages = 100
-    delay = 0.5
 
-    # Start the consumer
-    consumer = Consumer(broker_urls, address)
-    Container(consumer).run()
-
-    time.sleep(2)
-
-    # Start the producer
-    producer = Producer(broker_urls, address, num_messages, delay)
+    # Start the producer with the input variables
+    producer = Producer(broker_urls, args.address, args.num_messages, args.delay)
     Container(producer).run()
