@@ -21,8 +21,8 @@ class TopologyFetcher(MessagingHandler):
     def on_link_opened(self, event):
         if event.receiver == self.receiver:
             request = Message()
-            request.properties = {symbol("operation"): symbol("QUERY"),
-                                  symbol("entityType"): symbol("org.apache.qpid.dispatch.router")}
+            request.properties = {str(symbol("operation")): symbol("QUERY"),
+                                  str(symbol("entityType")): symbol("org.apache.qpid.dispatch.router")}
             request.reply_to = self.receiver.remote_source.address
             self.sender.send(request)
 
