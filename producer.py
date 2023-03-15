@@ -6,6 +6,7 @@ from proton import Message
 from proton.handlers import MessagingHandler
 from proton.reactor import Container
 
+
 class Producer(MessagingHandler):
     def __init__(self, urls, address, num_messages, delay):
         super(Producer, self).__init__()
@@ -32,6 +33,8 @@ class Producer(MessagingHandler):
 
     def on_start(self, event):
         self.sender = self.connect_to_broker(event)
+        if self.sender is None:
+            event.container.stop()
 
     def on_sendable(self, event):
         while self.sent_messages < self.num_messages:
@@ -45,13 +48,16 @@ class Producer(MessagingHandler):
                 time.sleep(self.delay)
             except Exception as e:
                 print(f"Failed to send message: {e}")
-                self.sender.close()
+                event.sender.close()
                 self.sender = self.connect_to_broker(event)
 
                 if self.sender is None:
+                    event.container.stop()
                     break
+                event.container.create_sender(self.sender.connection, self.address)
         else:
             event.sender.close()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AMQ Failure Testing Producer")
