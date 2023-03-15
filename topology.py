@@ -30,6 +30,8 @@ def fetch_topology(url, address):
             break
             
     broker_address = sender.connection.transport._transport.get_connection().get_peer_address()
+    broker_address = sender.connection.transport.get_connection().get_remote_address()
+
 
     # Send a message to the queue
     message = Message(content="Hello, world!")
