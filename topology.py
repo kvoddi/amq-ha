@@ -1,37 +1,33 @@
-import sys
 import argparse
-from proton import Message
-from proton.handlers import MessagingHandler
-from proton.reactor import Container
-from proton.utils import BlockingConnection
-from proton import symbol
+import qpid_proton as proton
 
-class TopologyFetcher(MessagingHandler):
-    def __init__(self, url, address):
-        super(TopologyFetcher, self).__init__()
-        self.url = url
-        self.address = address
+def fetch_topology(url, address):
+    conn = proton.Connection(url)
+    conn.container.container_id = "fetch_topology"
+    conn.open()
 
-    def on_start(self, event):
-        self.container = event.container
-        self.connection = event.container.connect(self.url, reconnect=False)
-        self.receiver = event.container.create_receiver(self.connection, None, dynamic=True)
-        self.sender = event.container.create_sender(self.connection, self.address)
+    receiver = conn.create_receiver(None, dynamic=True)
+    sender = conn.create_sender(address)
 
-    def on_link_opened(self, event):
-        if event.receiver == self.receiver:
-            request = Message()
-            request.properties = {str(symbol("operation")): symbol("QUERY"),
-                                  str(symbol("entityType")): symbol("org.apache.qpid.dispatch.router")}
-            request.reply_to = self.receiver.remote_source.address
-            self.sender.send(request)
+    request = proton.Message()
+    request.properties = {
+        "operation": "QUERY",
+        "entityType": "org.apache.qpid.dispatch.router"
+    }
+    request.reply_to = receiver.remote_source.address
+    sender.send(request)
 
-    def on_message(self, event):
-        print("Cluster topology:")
-        for node in event.message.body['results']:
-            print(f"Node: {node[0]}, Router ID: {node[1]}")
-
-        event.connection.close()
+    while not conn.closed:
+        try:
+            event = conn.container.next_event()
+            if event.type == proton.Event.MESSAGE and event.link == receiver:
+                print("Cluster topology:")
+                for node in event.message.body['results']:
+                    print(f"Node: {node[0]}, Router ID: {node[1]}")
+                conn.close()
+        except KeyboardInterrupt:
+            conn.close()
+            break
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AMQ Cluster Topology Fetcher")
@@ -40,5 +36,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    topology_fetcher = TopologyFetcher(args.url, args.address)
-    Container(topology_fetcher).run()
+    fetch_topology(args.url, args.address)
