@@ -1,0 +1,18 @@
+from proton import Connection
+
+def print_attributes(obj, indent=0):
+    for attr in dir(obj):
+        if not attr.startswith("_"):
+            value = getattr(obj, attr)
+            if callable(value):
+                print(" " * indent, f"{attr}()")
+                print_attributes(value(), indent + 2)
+            else:
+                print(" " * indent, f"{attr}: {value}")
+
+connection = Connection("amqp://localhost:5672")
+connection.open()
+
+print_attributes(connection)
+
+connection.close()
