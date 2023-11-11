@@ -1,11 +1,19 @@
-Kalyan Voddi is an accomplished Executive Director of Engineering with over 15 years of expertise in enhancing customer experiences and automating business processes. Based in New York City, he has established himself as a technically sophisticated professional dedicated to driving innovation and operational excellence.
+In my role as a computer engineer at a large bank, I successfully contributed to two key projects:
 
-Kalyan's leadership is exemplified by his tenure at Morgan Stanley, where he successfully managed a diverse, geographically distributed engineering team of 15+ professionals across India, New York, and Mexico. His ability to deliver effective guidance and direction fostered unparalleled growth within the team.
+Contribution 1: Externalizing Transaction Logs in IBM WebSphere
 
-Kalyan is well-versed in managing large complex platforms, having administered 900 Linux servers hosting critical platform products. Notably, he achieved 99.999 availability for Kafka clusters and orchestrated the establishment of Kafka connectivity between E*TRADE and Morgan Stanley.
+    I extended the logging framework within WebSphere applications, enabling externalization of transaction logs.
+    Custom log handlers were developed to redirect logs to external systems, improving accessibility and analysis.
+    Logs were standardized for consistency, easing cross-platform interpretation.
+    Integration with monitoring tools allowed real-time application performance insights.
+    Mechanisms for rapid error identification were implemented.
+    Comprehensive documentation and training were provided for teams.
 
-His expertise extends to automation, migration, and vendor management, all of which have been instrumental in optimizing business processes and driving innovation. Kalyan's strong problem-solving and team management skills have allowed him to excel in conveying complex technical information and generating innovative solutions.
+Contribution 2: Enabling Tracing on Kafka using Zipkin
 
-Kalyan holds multiple certifications, including Certified Kubernetes Administrator (CKA), Terraform Associate, Prometheus Certified Associate (PCA), and Confluent Certified Administrator for Apache Kafka (CCAAK), highlighting his commitment to staying at the forefront of rapidly evolving technology trends.
-
-Kalyan Voddi's unwavering dedication to excellence and his ability to drive enterprise-wide innovation make him a valuable asset in the field of engineering and technology.
+    I integrated Zipkin with Kafka to enhance observability in our microservices.
+    Instrumentation of Kafka producers and consumers generated trace data for message tracking.
+    Trace context propagation was implemented for end-to-end trace continuity.
+    Zipkin server setup and configuration enabled centralized trace data storage and visualization.
+    Trace data was monitored and analyzed using Zipkin's web interface to identify bottlenecks, diagnose issues, and optimize message processing.
+    Collaboration with development and operations teams ensured effective utilization of Zipkin for debugging and performance tuning.
