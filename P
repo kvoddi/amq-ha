@@ -1,66 +1,33 @@
-Project Title: Mainframe Data Migration to Distributed Systems using Kafka Connect
+* Introduction
+As on organization, lot of time was being spent on production outage calls from bothsupport and development teams, the downtime and errors were having significant financial implications for the organization and were also respoibsle for poor client experience.I recognized the importance of observability as a key driver of system reliability and customer satisfaction and pushed to adopt OpenTelemetry stack which values logs/traces and metrics euqllay and also create a stndard framework bettween multiple technology stacks.
 
-Project Description:
-In this project, I successfully led the migration of critical mainframe data to distributed systems via Kafka Connect. This solution involved complex configurations and system integrations demonstrating my expertise in multiple technology stacks.
+* Championing Observability with OpenTelemetry and Open-Source Tools
+I initiated a project to champion the adoption of advanced observability practices within the bank's IT department. This initiative included transitioning from proprietary solutions like Splunk and AppDynamics to open-source tools and OpenTelemetry, which offers more flexibility and control and also helped with creating a single UI(Grafana) instead of jumping between multiple UIs during outages.
 
-Project Overview:
+* Leadership and Communication skills
+I formed a cross-functional team of IT professionals with diverse skills, including software developers, systems administrators, and data analysts. This team played a pivotal role in the successful implementation of open-source observability tools.
+Through effective leadership and clear communication, I ensured that the team had a shared vision of the project's goals and their individual roles in achieving those goals.
 
-Objective: Migrate data from a mainframe system within a large bank to distributed systems for modernization, resliency and cost optimization.
+* Breakthrough Thinking
+I encouraged my team to think innovatively. We explored new approaches to observability that leveraged open-source technologies and OpenTelemetry.
+We conducted in-depth research on open-source tools and methodologies, and I facilitated brainstorming sessions to generate innovative solutions tailored to our specific needs.
 
-Technologies Used:
- * Apache Kafka
- * Kafka Connect
- * Apigee API gatway
- * IBM z/OS (Mainframe)
- * Distributed systems (SQL Databases)
- * Java applications.
- * Opentelemetry Observability Stack
- * IBM MQ
+As part of the observability initiative, we recognized the importance of distributed tracing for understanding the flow of requests across microservices and identifying performance bottlenecks.
+We integrated OpenTelemetry's tracing capabilities into our applications, enabling us to trace requests as they traversed through various components.
+The use of trace IDs became instrumental in correlating data across different services, allowing us to follow a request's journey through the entire system.
+This enhanced traceability played a critical role in identifying and resolving performance issues quickly.
 
-Solution Architecture:
+* Respectfully Challenging Ideas
+I fostered a culture of continuous improvement and encouraged team members to challenge existing norms which relied hevailiy on logs and evangalized the use of traces for better service visibility.
+Healthy debates led to the refinement of our observability strategy, ensuring the best practices were incorporated into our open-source observability approach.
 
-The solution architecture was designed to move mainframe data to SQL DB and configuring applications to route readonly calls to SQL DBs. We needed ensure data integrity, provide real-time movement of mainframe data to distributed systems with 500 ms latency. It included the following components:
-Component	Description
-Kafka Cluster - >	A multi-node Kafka cluster for data ingestion and distribution.
-Kafka Connect - >	Connector framework for extracting data from the mainframe, transforming it, and delivering it to various distributed systems.
-Data Producers - > (Kafka Connect Source Connectors)	Configured to extract data from mainframe sources.
-Data Consumers -> (Kafka Connect Sink Connectors)	Routed data to the target systems(SQL databases)
-Apigree gatway -> Route calls to mainframe if the data migration latency was high.
-Observability Stack - > Monitor data movenement latency,Kafka and Kafka Connectors.
-Java application - > The application would let us control client traffic flowing to Mainframe vs distributed systems.(This application would update the Apigee proxy configuration)
-Mainframe Z/Linux - > installation of connectors on Z/Linux to read from IBM MQ.
+* Implementation and Results
+We successfully implemented open-source observability tools, leveraging OpenTelemetry for application instrumentation, and incorporating open-source log analysis and metrics collection solutions.
+This transition not only reduced licensing costs but also provided greater flexibility in customizing our observability stack to the bank's unique requirements.
+We were able to improve the system avaialblity by reducing system downtime, the FCI(Railed client interactions) were down by 28 % and calls to call centers were down by 40 %.
 
-Implementation:
+* Conclusion
+Through my leadership, innovative thinking, and the transition to open-source observability tools and OpenTelemetry, the project delivered tangible business results. This transition not only reduced costs but also improved observability, leading to significantly reduced downtime, customer complaints, MTTI(Mean Time for Identification) and MMTR(Mean Time for Resolution).
+The success of this initiative highlights the value of open-source observability solutions, the use of tracing, and trace IDs in enhancing system reliability and customer satisfaction.
 
-The project involved the following key implementation steps:
 
-Kafka Cluster and Kafka Connect Setup:
-Provisioned and configured a Kafka cluster along with Kafka Connect.
-Defined source connectors to extract data from the mainframe and write to SQL DB.
-
-Data Transformation and Routing:
-Applied transformations to convert mainframe data into a format suitable for the target systems.
-Configured Kafka Connect sink connectors to route data to the desired distributed systems.
-
-Data Validation and Monitoring:
-Implemented data validation mechanisms to ensure data consistency using schema registry.
-Monitored the entire data migration process for accuracy and completeness, we used prometheus/grafana and Loki to monitor the system.
-
-Java Application & Apigee gateway:
-This application as a failsafe mechanism, we could control the client calls going to mainframe system and distribued systems.Ex: 80 % to mainframe and 20 % to SQL DB.
-
-Key Achievements:
-Successful create a mainframe data to distributed systems migration pattern.
-High data accuracy and reliability throughout the migration process.
-Real-time access to mainframe data for analytics and decision-making.
-Scalable and extensible architecture for future data integration needs.
-
-Results and Benefits:
-Enabled the bank to modernize its data infrastructure and leverage distributed systems with the evntual goal of moving away from mainframe systems.
-Real-time access to previously siloed mainframe data.
-Reduced consumption of MIPS on mainframe system.
-
-Conclusion:
-This project showcases my ability to build and configure complex solutions, conduct system integrations, and design solution architectures using Apache Kafka, with a specific focus on migrating data from a mainframe to distributed systems using Kafka Connect. The successful completion of this project has brought significant benefits to the bank and demonstrated my expertise in Kafka technology and data migration.
-
-Note : The data migration could have also been done with CDC, we looked into several systems like HVR/Debezium and Qlik but there were complex to setup and expensive for the data volumes we were planning to move. 
