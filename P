@@ -1,0 +1,48 @@
+
+**Awards:**
+
+1. **CIO 100 Award**
+   - *Award Name:* CIO 100
+   - *Awarding Organization:* IDG Communications
+   - *Date Received:* August 2020
+   - *Description:* The CIO 100 Award recognized your innovative use of technology.The award was presented for implementation business workflows for Financial Analyst use cases within Morgan Stanley.This award signifies your exceptional contributions to the field of technology and your commitment to leveraging technology in groundbreaking ways.
+
+**Certifications:**
+
+1. **Certified Kubernetes Administrator (CKA)**
+   - *Issuing Organization:* The Linux Foundation
+   - *Certification ID:* LF-tli03et9bh
+   - *Date Earned:* October 2022
+   - *Description:* Certified Kubernetes Administrator (CKA) certification demonstrates your expertise in managing containerized applications with Kubernetes, a crucial skill in the modern IT landscape.
+
+2. **Terraform Associate (002)**
+   - *Issuing Organization:* HashiCorp
+   - *Date Earned:* October 2022
+   - *Description:* The Terraform Associate certification validates your knowledge and skills in using Terraform, a powerful infrastructure-as-code tool, to automate and manage cloud infrastructure.
+
+3. **Prometheus Certified Associate (PCA)**
+   - *Issuing Organization:* The Linux Foundation
+   - *Certification ID:* LF-t3sks8ylav
+   - *Date Earned:* September 2022
+   - *Description:* The Prometheus Certified Associate (PCA) certification showcases your competence in monitoring and alerting using Prometheus, a widely used open-source monitoring system.
+
+4. **Confluent Certified Administrator for Apache Kafka (CCAAK)**
+   - *Issuing Organization:* Confluent
+   - *Certification ID:* 0000000099983365
+   - *Date Earned:* September 2022
+   - *Description:* The Confluent Certified Administrator for Apache Kafka (CCAAK) certification affirms your proficiency in managing and administering Apache Kafka, a popular distributed streaming platform.
+
+5. **AWS Certified Cloud Practitioner**
+   - *Issuing Organization:* Amazon Web Services Training and Certification
+   - *Date Earned:* December 2022
+   - *Description:* The AWS Certified Cloud Practitioner certification serves as an entry-level credential, demonstrating your foundational understanding of AWS cloud services and solutions.
+
+6. **IBM Certified System Administrator - IBM WebSphere Administrator 8.0 Core**
+   - *Issuing Organization:* IBM
+   - *Credential ID:* SR3282844
+   - *Date Earned:* April 2012
+   - *Description:* The IBM Certified System Administrator for IBM WebSphere Administrator 8.0 Core certification reflects your expertise in managing and administering IBM WebSphere Application Server.
+
+**Patents:**
+
+None. 
