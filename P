@@ -1,48 +1,66 @@
+Project Title: Mainframe Data Migration to Distributed Systems using Kafka Connect
 
-**Awards:**
+Project Description:
+In this project, I successfully led the migration of critical mainframe data to distributed systems via Kafka Connect. This solution involved complex configurations and system integrations demonstrating my expertise in multiple technology stacks.
 
-1. **CIO 100 Award**
-   - *Award Name:* CIO 100
-   - *Awarding Organization:* IDG Communications
-   - *Date Received:* August 2020
-   - *Description:* The CIO 100 Award recognized your innovative use of technology.The award was presented for implementation business workflows for Financial Analyst use cases within Morgan Stanley.This award signifies your exceptional contributions to the field of technology and your commitment to leveraging technology in groundbreaking ways.
+Project Overview:
 
-**Certifications:**
+Objective: Migrate data from a mainframe system within a large bank to distributed systems for modernization, resliency and cost optimization.
 
-1. **Certified Kubernetes Administrator (CKA)**
-   - *Issuing Organization:* The Linux Foundation
-   - *Certification ID:* LF-tli03et9bh
-   - *Date Earned:* October 2022
-   - *Description:* Certified Kubernetes Administrator (CKA) certification demonstrates your expertise in managing containerized applications with Kubernetes, a crucial skill in the modern IT landscape.
+Technologies Used:
+ * Apache Kafka
+ * Kafka Connect
+ * Apigee API gatway
+ * IBM z/OS (Mainframe)
+ * Distributed systems (SQL Databases)
+ * Java applications.
+ * Opentelemetry Observability Stack
+ * IBM MQ
 
-2. **Terraform Associate (002)**
-   - *Issuing Organization:* HashiCorp
-   - *Date Earned:* October 2022
-   - *Description:* The Terraform Associate certification validates your knowledge and skills in using Terraform, a powerful infrastructure-as-code tool, to automate and manage cloud infrastructure.
+Solution Architecture:
 
-3. **Prometheus Certified Associate (PCA)**
-   - *Issuing Organization:* The Linux Foundation
-   - *Certification ID:* LF-t3sks8ylav
-   - *Date Earned:* September 2022
-   - *Description:* The Prometheus Certified Associate (PCA) certification showcases your competence in monitoring and alerting using Prometheus, a widely used open-source monitoring system.
+The solution architecture was designed to move mainframe data to SQL DB and configuring applications to route readonly calls to SQL DBs. We needed ensure data integrity, provide real-time movement of mainframe data to distributed systems with 500 ms latency. It included the following components:
+Component	Description
+Kafka Cluster - >	A multi-node Kafka cluster for data ingestion and distribution.
+Kafka Connect - >	Connector framework for extracting data from the mainframe, transforming it, and delivering it to various distributed systems.
+Data Producers - > (Kafka Connect Source Connectors)	Configured to extract data from mainframe sources.
+Data Consumers -> (Kafka Connect Sink Connectors)	Routed data to the target systems(SQL databases)
+Apigree gatway -> Route calls to mainframe if the data migration latency was high.
+Observability Stack - > Monitor data movenement latency,Kafka and Kafka Connectors.
+Java application - > The application would let us control client traffic flowing to Mainframe vs distributed systems.(This application would update the Apigee proxy configuration)
+Mainframe Z/Linux - > installation of connectors on Z/Linux to read from IBM MQ.
 
-4. **Confluent Certified Administrator for Apache Kafka (CCAAK)**
-   - *Issuing Organization:* Confluent
-   - *Certification ID:* 0000000099983365
-   - *Date Earned:* September 2022
-   - *Description:* The Confluent Certified Administrator for Apache Kafka (CCAAK) certification affirms your proficiency in managing and administering Apache Kafka, a popular distributed streaming platform.
+Implementation:
 
-5. **AWS Certified Cloud Practitioner**
-   - *Issuing Organization:* Amazon Web Services Training and Certification
-   - *Date Earned:* December 2022
-   - *Description:* The AWS Certified Cloud Practitioner certification serves as an entry-level credential, demonstrating your foundational understanding of AWS cloud services and solutions.
+The project involved the following key implementation steps:
 
-6. **IBM Certified System Administrator - IBM WebSphere Administrator 8.0 Core**
-   - *Issuing Organization:* IBM
-   - *Credential ID:* SR3282844
-   - *Date Earned:* April 2012
-   - *Description:* The IBM Certified System Administrator for IBM WebSphere Administrator 8.0 Core certification reflects your expertise in managing and administering IBM WebSphere Application Server.
+Kafka Cluster and Kafka Connect Setup:
+Provisioned and configured a Kafka cluster along with Kafka Connect.
+Defined source connectors to extract data from the mainframe and write to SQL DB.
 
-**Patents:**
+Data Transformation and Routing:
+Applied transformations to convert mainframe data into a format suitable for the target systems.
+Configured Kafka Connect sink connectors to route data to the desired distributed systems.
 
-None. 
+Data Validation and Monitoring:
+Implemented data validation mechanisms to ensure data consistency using schema registry.
+Monitored the entire data migration process for accuracy and completeness, we used prometheus/grafana and Loki to monitor the system.
+
+Java Application & Apigee gateway:
+This application as a failsafe mechanism, we could control the client calls going to mainframe system and distribued systems.Ex: 80 % to mainframe and 20 % to SQL DB.
+
+Key Achievements:
+Successful create a mainframe data to distributed systems migration pattern.
+High data accuracy and reliability throughout the migration process.
+Real-time access to mainframe data for analytics and decision-making.
+Scalable and extensible architecture for future data integration needs.
+
+Results and Benefits:
+Enabled the bank to modernize its data infrastructure and leverage distributed systems with the evntual goal of moving away from mainframe systems.
+Real-time access to previously siloed mainframe data.
+Reduced consumption of MIPS on mainframe system.
+
+Conclusion:
+This project showcases my ability to build and configure complex solutions, conduct system integrations, and design solution architectures using Apache Kafka, with a specific focus on migrating data from a mainframe to distributed systems using Kafka Connect. The successful completion of this project has brought significant benefits to the bank and demonstrated my expertise in Kafka technology and data migration.
+
+Note : The data migration could have also been done with CDC, we looked into several systems like HVR/Debezium and Qlik but there were complex to setup and expensive for the data volumes we were planning to move. 
