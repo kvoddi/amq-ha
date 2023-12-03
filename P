@@ -486,3 +486,65 @@ Setting up and running Cadence workflows involves several steps, which I will ou
 ---
 
 This guide provides a comprehensive overview of setting up and running Cadence workflows. As a platform engineer, it's crucial to adapt these steps to your specific infrastructure and requirements. Regularly review Cadence's official documentation and community best practices for the latest updates and strategies.
+
+
+
+The core infrastructure components of Cadence, a distributed, scalable, and highly available orchestration engine, play crucial roles in its functionality. Here's a detailed breakdown of each component:
+
+### 1. Cadence Service
+
+- **Primary Role:** Central orchestrator of workflow executions.
+- **Sub-Components:**
+  - **Frontend Service:** Handles API requests, manages domains, and routes requests to appropriate clusters.
+  - **Matching Service:** Manages task lists, dispatches tasks to workers, and ensures tasks are delivered only once.
+  - **History Service:** Maintains the state and history of workflow executions, handles events within workflows.
+  - **Worker Service:** Hosts background processing tasks like archival and system workflows.
+
+### 2. Database (Persistence Layer)
+
+- **Functionality:** Stores state and history of workflow executions, maintains task lists, and stores other metadata.
+- **Supported Databases:** Cassandra, MySQL, PostgreSQL (each with unique setup and schema requirements).
+- **Role in High Availability:** Ensures durability and consistency of data across Cadence clusters.
+
+### 3. Messaging System (Optional)
+
+- **Purpose:** Used for scaling out event processing and providing high-throughput, especially in larger Cadence deployments.
+- **Common Choices:** Kafka is a popular choice for this purpose.
+- **Role:** Mainly used in replication of events across clusters for global domain setups.
+
+### 4. Cluster Metadata Store
+
+- **Purpose:** Stores metadata about the Cadence cluster, such as information about different domains.
+- **Implementation:** Often part of the primary database setup but can be managed separately depending on configuration.
+
+### 5. Cadence Web UI
+
+- **Functionality:** Provides a user interface for visualizing and managing workflows.
+- **Usage:** Enables operational visibility into workflows, allows searching for workflows, and offers workflow summaries and details.
+
+### 6. Cadence CLI
+
+- **Role:** Command-line interface for administering the Cadence service.
+- **Capabilities:** Includes starting/stopping workflows, querying state, and managing domains.
+
+### 7. Cadence Workers
+
+- **Purpose:** Execute the business logic of workflows and activities.
+- **Types:**
+  - **Workflow Workers:** Host workflow code and make decisions.
+  - **Activity Workers:** Execute activity tasks, which are the actual units of work.
+- **Customizability:** Can be implemented in various programming languages using Cadence SDKs.
+
+### 8. Cadence SDKs
+
+- **Functionality:** Provides APIs for writing workflows and activities in different programming languages.
+- **Common SDKs:** Available for languages like Go and Java, facilitating the development of workflows and activities.
+
+### 9. Load Balancer (Optional)
+
+- **Usage:** Distributes incoming traffic across multiple instances of the Cadence frontend service.
+- **Importance:** Enhances scalability and availability of the Cadence cluster.
+
+---
+
+Each of these components plays a specific role in ensuring that Cadence operates efficiently as a workflow orchestration system, capable of handling complex workflows, tasks, and activities across distributed systems. It's crucial to properly configure and manage these components to leverage Cadence's full capabilities in orchestrating distributed, scalable, and fault-tolerant applications.
