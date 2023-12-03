@@ -808,3 +808,141 @@ Establish a robust, multi-region data center infrastructure for a high-availabil
 ### Conclusion
 
 This example showcases how Cadence can orchestrate a complex, multi-layered infrastructure provisioning process. It illustrates the use of both parallel and serial tasks, handling dependencies, ensuring fault tolerance, and maintaining the state across diverse and geographically distributed environments. Such a setup is critical in the banking sector, where high availability, security, and compliance are paramount.
+
+
+Certainly, Kalyan. Here are implementation examples in Go for various Cadence concepts including signals, timeouts, retries, tasks, and workflows. These examples are simplified to illustrate key concepts and are based on the assumption that you have a basic setup of the Cadence client and worker in place.
+
+### 1. Workflow Definition
+
+A simple workflow to demonstrate the basic structure:
+
+```go
+package workflows
+
+import (
+	"go.uber.org/cadence/workflow"
+	"time"
+)
+
+// SampleWorkflow - a simple workflow definition
+func SampleWorkflow(ctx workflow.Context) error {
+	// Business logic of the workflow goes here
+	return nil
+}
+```
+
+### 2. Activity Definition
+
+An activity with a retry policy:
+
+```go
+package activities
+
+import (
+	"go.uber.org/cadence/activity"
+	"time"
+)
+
+// SampleActivity - a simple activity with retry policy
+func SampleActivity(ctx context.Context) error {
+	// Business logic of the activity
+	return nil
+}
+
+// Activity options with retry policy
+activityOptions := activity.RetryPolicy{
+	InitialInterval:    time.Second,
+	BackoffCoefficient: 2.0,
+	MaximumInterval:    time.Minute,
+	MaximumAttempts:    5,
+}
+```
+
+### 3. Workflow with Timeouts
+
+A workflow with an activity execution timeout:
+
+```go
+func TimeoutWorkflow(ctx workflow.Context) error {
+	ao := workflow.ActivityOptions{
+		StartToCloseTimeout: time.Minute, // Timeout for the activity
+	}
+	ctx = workflow.WithActivityOptions(ctx, ao)
+
+	err := workflow.ExecuteActivity(ctx, SampleActivity).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+### 4. Sending and Handling Signals in Workflow
+
+Workflow receiving a signal:
+
+```go
+func SignalWorkflow(ctx workflow.Context) error {
+	var signalVal string
+	signalChan := workflow.GetSignalChannel(ctx, "sampleSignal")
+
+	// Blocking wait for a signal
+	signalChan.Receive(ctx, &signalVal)
+
+	// Proceed after receiving the signal
+	// ...
+
+	return nil
+}
+```
+
+### 5. Workflow with Custom Tasks Lists
+
+Workflow using a specific task list:
+
+```go
+func TaskListWorkflow(ctx workflow.Context) error {
+	ao := workflow.ActivityOptions{
+		TaskList: "customTaskList",
+		// other options...
+	}
+	ctx = workflow.WithActivityOptions(ctx, ao)
+
+	err := workflow.ExecuteActivity(ctx, SampleActivity).Get(ctx, nil)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+```
+
+### Usage and Registration
+
+To use these workflows and activities, you must register them with your Cadence worker. Here's an example of how to do this in your main application file:
+
+```go
+package main
+
+import (
+	"go.uber.org/cadence/worker"
+	"your_project/workflows"
+	"your_project/activities"
+)
+
+func main() {
+	// Configure Cadence client and worker...
+
+	// Register workflow and activity
+	worker.RegisterWorkflow(workflows.SampleWorkflow)
+	worker.RegisterActivity(activities.SampleActivity)
+
+	// Start Worker
+	// ...
+}
+```
+
+### Conclusion
+
+These examples demonstrate basic implementations of workflows, activities, timeouts, retries, tasks, and signals in Cadence using Go. They serve as foundational building blocks for creating more complex and specific workflows tailored to your needs in infrastructure provisioning or other use cases. Remember, in a real-world scenario, you'll need to adapt and expand upon these examples to fit the specific logic and requirements of your workflows and activities.
