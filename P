@@ -627,3 +627,70 @@ Creating workflows in Cadence requires adherence to a set of best practices to e
 ---
 
 Following these best practices ensures that workflows designed in Cadence are robust, scalable, and maintainable. As workflows are crucial in coordinating complex processes, especially in distributed systems, adhering to these guidelines will significantly enhance the reliability and efficiency of your solutions.
+
+
+Cadence is a powerful workflow orchestration platform, but like any tool, it's best suited for certain scenarios and less ideal for others. Here’s a guide to help you understand when to use Cadence and when not to:
+
+### When to Use Cadence
+
+1. **Complex Workflows:**
+   - Ideal for orchestrating complex, long-running workflows with multiple steps or stages.
+   - Useful when workflows involve conditional logic, loops, retries, and timeouts.
+
+2. **Distributed Systems:**
+   - Suitable for coordinating tasks across distributed services and systems.
+   - Helps in maintaining consistency and state across microservices.
+
+3. **Fault Tolerance and Reliability:**
+   - Beneficial in scenarios where fault tolerance is critical.
+   - Automatically handles retries, timeouts, and recovery from failures.
+
+4. **Asynchronous Operations:**
+   - Effective for managing asynchronous tasks and workflows.
+   - Provides robust support for callbacks and event-driven architectures.
+
+5. **Scalability Requirements:**
+   - Suitable for workflows that need to scale dynamically with load.
+   - Capable of handling high-throughput and parallel executions.
+
+6. **Long-running Processes:**
+   - Ideal for workflows that run for extended periods (hours, days, or longer).
+   - Maintains state and progress of long-running jobs efficiently.
+
+7. **Workflow Auditing and Monitoring:**
+   - Useful when detailed auditing, tracking, and monitoring of workflows are required.
+   - Provides tools for visualizing workflow execution and state.
+
+### When Not to Use Cadence
+
+1. **Simple or Short-lived Tasks:**
+   - Overkill for simple, short-lived, or one-off tasks.
+   - Lightweight task queues or cron jobs might be more appropriate.
+
+2. **Highly Synchronous Workflows:**
+   - Not ideal for workflows that require tight synchronization or real-time processing.
+   - Other solutions may offer lower latency for these use cases.
+
+3. **Limited Scalability Needs:**
+   - Not necessary for applications with minimal scalability requirements.
+   - Can introduce unnecessary complexity in small-scale applications.
+
+4. **Stateless Workflows:**
+   - If workflows are stateless or do not require durability, simpler alternatives might suffice.
+   - Stateless processing engines or simple scripting might be more efficient.
+
+5. **Rapid Development and Deployment:**
+   - The complexity of Cadence might slow down rapid prototyping or deployment.
+   - Lightweight frameworks or scripting could be faster for quick turnaround projects.
+
+6. **Limited Resources:**
+   - Requires a fair amount of infrastructure and resources to run effectively.
+   - Not ideal for scenarios with strict resource constraints.
+
+7. **Non-Distributed Architectures:**
+   - Overly complex for applications that do not have a distributed architecture.
+   - Simpler workflow engines might be more suitable for monolithic applications.
+
+### Conclusion
+
+Cadence shines in complex, distributed, and fault-tolerant environments where managing state, retries, and long-running workflows is essential. However, it may introduce unnecessary complexity and overhead for simple, short-lived, or highly synchronous tasks. The decision to use Cadence should be based on the specific requirements of your workflow complexity, scalability needs, and the architectural context of your application.
