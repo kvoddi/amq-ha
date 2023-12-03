@@ -357,3 +357,39 @@ Deciding between having one workflow per worker or many workflows per worker in 
 
 In summary, the choice between one workflow per worker and many workflows per worker should be based on the specific requirements of your system, including the nature and volume of workflows, resource availability, and the complexity you can manage. For large, complex systems with diverse workflows, many workflows per worker might be more efficient. In contrast, for systems with fewer, resource-intensive workflows, one workflow per worker could be more effective.
 
+
+
+As of my last update in April 2023, while there isn't a single designated vendor providing professional services specifically for Cadence Workflow due to its open-source nature, there are several avenues where professional services can be sought:
+
+### 1. Software Development Firms and IT Consultancies
+- Many software development firms and IT consultancies offer services around open-source technologies, including workflow orchestration tools like Cadence.
+- These firms can provide customized solutions, integration services, and support for Cadence-based systems.
+
+### 2. Freelance Developers and Specialists
+- Freelance developers or independent consultants with expertise in Cadence Workflow can offer personalized services.
+- They can be found through professional networks, freelance platforms, or referrals.
+
+### 3. Cloud Service Providers
+- If you are hosting Cadence on a cloud platform, some cloud service providers might offer support services for the orchestration and management of open-source tools deployed on their infrastructure.
+
+### 4. Specialized Technology Companies
+- Some companies specialize in workflow automation and distributed systems and may have the expertise to provide professional services for Cadence.
+- These companies often offer more than just implementation support, including strategic planning, optimization, and ongoing maintenance.
+
+### 5. Community-Driven Consultancies
+- There are consultancies that form around open-source communities. These firms typically employ contributors to the open-source project, offering a high level of expertise.
+
+### 6. Enterprise Support Services
+- While not Cadence-specific, some enterprise support services cover a wide range of open-source technologies and might include Cadence in their portfolio.
+
+### Considerations When Seeking Professional Services
+- **Expertise and Experience**: Look for providers with proven experience in Cadence and similar technologies.
+- **Project Requirements**: Ensure the service provider can meet your specific project requirements, including scale, complexity, and timeline.
+- **Support and Maintenance**: Consider the long-term support and maintenance capabilities of the service provider.
+- **Community Involvement**: Providers actively involved in the Cadence community may offer more up-to-date and in-depth knowledge.
+
+### Conclusion
+Professional services for Cadence Workflow are typically provided by a range of third-party firms, freelance experts, and consultancies with expertise in open-source technologies. When choosing a service provider, it's important to consider their experience with Cadence, understanding of your specific needs, and their long-term support capabilities.
+
+
+https://instaclustr.medium.com/instaclustr-releases-managed-cadence-for-public-preview-2ad9b999cd53
