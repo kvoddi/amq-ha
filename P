@@ -1,104 +1,28 @@
-Certainly, Kenshi. Here is the table with the list number, process, description, and vendor:
-
-| No. | Process             | Description                                                               | Vendor                          |
-|-----|---------------------|---------------------------------------------------------------------------|---------------------------------|
-| 1   | java                | Executes Java applications                                                | Oracle                          |
-| 2   | TaniumCX            | Endpoint management and security platform                                 | Tanium                          |
-| 3   | metricbeat          | Collects and ships system and service metrics to Elasticsearch             | Elastic                         |
-| 4   | BESClient           | Endpoint management software for patch management and compliance          | IBM                             |
-| 5   | .vasd               | Provides Active Directory integration for Unix/Linux                      | BeyondTrust (formerly Vintela)  |
-| 6   | TaniumClient        | Client agent for Tanium endpoint management system                        | Tanium                          |
-| 7   | tuned               | Dynamic system tuning daemon                                               | Red Hat                         |
-| 8   | cybAgent.bin        | Manages privileged accounts and credentials                               | CyberArk                        |
-| 9   | systemd-journal     | Logs management component of systemd                                       | Community (Linux Foundation)    |
-| 10  | processes           | Generic representation of system processes                                | General                         |
-| 11  | nessus-agent-mo     | Security vulnerability scanner agent                                      | Tenable                         |
-| 12  | auditd              | Logs security-related system events                                       | Community (Linux Foundation)    |
-| 13  | filebeat            | Forwards and centralizes log data                                         | Elastic                         |
-| 14  | dsmc                | Client component for backup and recovery                                  | IBM (Spectrum Protect)          |
-| 15  | hyperkube           | Includes all Kubernetes binaries for managing clusters                    | Kubernetes (CNCF)               |
-| 16  | ragent              | Associated with Rogue Wave software for development tools                 | Rogue Wave                      |
-| 17  | dockerd-current     | Manages Docker containers                                                 | Docker Inc.                     |
-| 18  | elastic-agent       | Unified agent for logs, metrics, and security data collection             | Elastic                         |
-| 19  | sysedge             | Performance and availability monitoring agent                             | CA Technologies                 |
-| 20  | ragentctrl          | Management tool for Rogue Wave agents                                     | Rogue Wave                      |
-| 21  | ovs-vswitchd        | Provides virtual network switch functionality                             | Open vSwitch (Community)        |
-| 22  | python2             | Runs Python 2 scripts                                                     | Python Software Foundation      |
-| 23  | rsyslogd            | Enhanced logging daemon                                                   | Rsyslog (Community)             |
-| 24  | logmon              | Monitors log files for specific entries                                   | General                         |
-| 25  | impalad             | High-performance distributed SQL engine for Apache Hadoop                 | Cloudera                        |
-| 26  | amazon-cloudwat     | Collects and monitors log and metrics data for AWS services               | Amazon Web Services             |
-| 27  | mongodb-mms-aut     | Monitors and backs up MongoDB deployments                                 | MongoDB Inc.                    |
-| 28  | mongod              | Runs MongoDB database server                                              | MongoDB Inc.                    |
-| 29  | netprobe.linux_     | Monitors system and application metrics                                   | ITRS Group                      |
-| 30  | q64                 | Likely associated with Quest Software tools                               | Quest Software                  |
-| 31  | systemd             | System and service manager for Linux operating systems                    | Community (Linux Foundation)    |
-| 32  | tet-main            | Test execution management tool                                            | Open Group                      |
-| 33  | osysmond.bin        | Monitors Oracle system components                                         | Oracle                          |
-| 34  | tet-sensor          | Monitors system for test execution                                        | Open Group                      |
-| 35  | splunkd             | Collects, indexes, and analyzes machine data                              | Splunk Inc.                     |
-| 36  | cmagent             | Manages user identity and access control                                  | Centrify                        |
-| 37  | NetworkManager      | Manages network connections and settings                                  | Community (Linux Foundation)    |
-| 38  | dockerd             | Manages Docker containers                                                 | Docker Inc.                     |
-| 39  | QAEngineRunner      | Executes quality assurance tests                                          | General                         |
-| 40  | containerd          | Manages container lifecycle                                               | CNCF (Cloud Native Computing Foundation) |
-| 41  | python              | Runs Python scripts                                                       | Python Software Foundation      |
-| 42  | ragentinst          | Installs Rogue Wave agents                                                | Rogue Wave                      |
-| 43  | RavenFIXSession     | Manages FIX (Financial Information eXchange) sessions                     | Raven Software                  |
-| 44  | memq_cnode          | Manages MemSQL database nodes                                             | SingleStore                     |
-| 45  | vxencryptd          | Provides encryption services for Veritas software                         | Veritas                         |
-| 46  | invokeGCC34         | Executes the GCC compiler version 3.4                                     | GNU                             |
-| 47  | haproxy             | High availability load balancer and proxy server                          | HAProxy Technologies            |
-| 48  | containerd-shim     | Manages container lifecycle                                               | CNCF (Cloud Native Computing Foundation) |
-| 49  | openshift           | Kubernetes-based container platform                                       | Red Hat                         |
-| 50  | vxcloudd            | Manages Veritas cloud services                                            | Veritas                         |
-| 51  | node                | JavaScript runtime for server-side programming                            | OpenJS Foundation               |
-| 52  | httpd               | Web server daemon                                                         | Apache Software Foundation      |
-| 53  | vmtoolsd            | Manages VMware tools for virtual machines                                 | VMware                          |
-| 54  | db2sysc             | Db2 database system controller                                            | IBM                             |
-| 55  | apm-server          | Collects and forwards performance metrics                                 | Elastic                         |
-| 56  | abreporterd         | Reports and adjusts screen brightness                                     | General                         |
-| 57  | unitool             | Generic utility tool                                                      | General                         |
-| 58  | DataFlowEngine      | Manages data processing flows                                             | General                         |
-| 59  | mysqld              | MySQL database server                                                     | Oracle                          |
-| 60  | mongos              | Routes queries to MongoDB shards                                          | MongoDB Inc.                    |
-| 61  | amqrmppa            | Multi-threaded agent for IBM's message queuing middleware                 | IBM                             |
-| 62  | solCacheInstanc     | Manages SolarWinds cache                                                  | SolarWinds                      |
-| 63  | telegraf            | Agent for collecting metrics and events                                   | InfluxData                      |
-| 64  | q                   | Likely associated with Quest Software tools                               | Quest Software                  |
-| 65  | batchman            | Manages batch job execution                                               | General                         |
-| 66  | tet-enforcer        | Enforces test execution policies                                          | Open Group                      |
-| 67  | db2syscr            | Db2 system control resource                                               | IBM                             |
-| 68  | dsmserv             | Server component for backup and recovery                                  | IBM (Spectrum Protect)          |
-| 69  | ocssd.bin           | Manages Oracle cluster synchronization                                    | Oracle                          |
-| 70  | nginx               | High-performance web server and reverse proxy                             | NGINX, Inc.                     |
-| 71  | jstart              | Manages SAP Java processes                                                | SAP                             |
-| 72  | etcd                | Distributed key-value store for Kubernetes                                | CNCF (Cloud Native Computing Foundation) |
-| 73  | gateway2.linux_     | Manages gateway services                                                  | General                         |
-| 74  | swx                 | Provides service management capabilities                                  | General                         |
-| 75  | postgres            | PostgreSQL database server                                                | PostgreSQL Global Development Group |
-| 76  | gmond               | Monitors system performance metrics                                       | Ganglia (Community)             |
-| 77  | kudu-tserver        | Tablet server for Kudu, a columnar storage manager                        | Apache Software Foundation      |
-| 78  | ragentwd            | Monitors Rogue Wave agents                                                | Rogue Wave                      |
-| 79  | kubelet             | Manages Kubernetes node operations                                        | Kubernetes (CNCF)               |
-| 80  | beam.smp            | Erlang runtime system                                                     | Ericsson                        |
-| 81  | XXAbbridged         | Placeholder for a specific application                                    | General                         |
-| 82  | cmaperfd            | Monitors and manages CA software performance                              | CA Technologies                 |
-| 83  | tnslsnr             | Manages incoming Oracle database connections                              | Oracle                          |
-| 84  | adc-data-engine     | Manages data processing for ADC                                           | General                         |
-| 85  | ruby                | Runs Ruby scripts                                                         | Ruby Community                  |
-| 86  | ologgerd            | Manages logging for Oracle components                                     | Oracle                          |
-| 87  | asd                 | Manages adaptive server operations                                        | General                         |
-| 88  | elxhbamgrd          | Manages Host Bus Adapter for Emulex                                       | Broadcom                        |
-| 89  | run-vizqlserver     | Manages query processing and visualization in Tableau                     | Tableau Software                |
-| 90  | actimize_intell     |  Provides financial crime risk management services                        | NICE Actimize                   |
-| 91  | appd-netagent       | Monitors network performance                                              | AppDynamics                     |
-| 92  | had                 | Manages high availability services                                        | General                         |
-| 93  | Xab-run             | Manages XMPP services for instant messaging                               | General                         |
-| 94  | rvd 8.4.1           | Manages data feed for Reuters                                             | Refinitiv                       |
-| 95  | redis-server        | In-memory data structure store                                            | Redis Labs                      |
-| 96  | bundle              | Manages Ruby application dependencies                                     | Ruby Community                  |
-| 97  | image.bin           | Generic binary image file                                                 | General                         |
-| 98  | oraagent.bin        | Manages Oracle database operations                                        | Oracle                          |
-| 99  | ohasd.bin           | Manages Oracle high availability services                                 | Oracle                          |
-| 100 | FalconForwardPr     | Endpoint protection agent                                                 | CrowdStrike                     |
+GET /your_index/_search
+{
+  "size": 1000,  // Adjust size as needed
+  "_source": ["message"],  // Retrieve only the message field
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "2024-05-13T00:00:00",
+        "lte": "2024-05-20T23:59:59"
+      }
+    }
+  },
+  "script_fields": {
+    "extracted_user": {
+      "script": {
+        "lang": "painless",
+        "source": """
+          def m = /message\\s+(\\w+)/.matcher(doc['message.keyword'].value);
+          if (m.find()) {
+            return m.group(1);
+          } else {
+            return null;
+          }
+        """
+      }
+    }
+  }
+}
