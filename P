@@ -1,28 +1,86 @@
-GET /your_index/_search
-{
-  "size": 1000,  // Adjust size as needed
-  "_source": ["message"],  // Retrieve only the message field
-  "query": {
-    "range": {
-      "@timestamp": {
-        "gte": "2024-05-13T00:00:00",
-        "lte": "2024-05-20T23:59:59"
-      }
-    }
-  },
-  "script_fields": {
-    "extracted_user": {
-      "script": {
-        "lang": "painless",
-        "source": """
-          def m = /message\\s+(\\w+)/.matcher(doc['message.keyword'].value);
-          if (m.find()) {
-            return m.group(1);
-          } else {
-            return null;
-          }
-        """
-      }
-    }
-  }
-}
+metadata:
+  team: TeamA
+  owner: Alice
+  use_cases:
+    - Real-time analytics
+    - Logging
+
+topics:
+  - name: topic1
+    consumer_group: group1
+    config:
+      partitions: 3
+      replication_factor: 2
+      retention_ms: 86400000 # 1 day
+    acl:
+      - principal: certificate:CN=alice,OU=Engineering,O=Example Corp
+        operation: read
+      - principal: certificate:CN=bob,OU=Engineering,O=Example Corp
+        operation: write
+
+  - name: topic2
+    consumer_group: group2
+    config:
+      partitions: 5
+      replication_factor: 3
+      retention_ms: 172800000 # 2 days
+    acl:
+      - principal: certificate:CN=charlie,OU=Engineering,O=Example Corp
+        operation: readwrite
+      - principal: certificate:CN=delta,OU=Engineering,O=Example Corp
+        operation: write
+
+environments:
+  - name: dev
+    security_protocol: PLAINTEXT
+    topics:
+      - name: topic1
+        consumer_group: group1
+        config:
+          partitions: 3
+          replication_factor: 2
+          retention_ms: 86400000 # 1 day
+        acl:
+          - principal: certificate:CN=alice,OU=Engineering,O=Example Corp
+            operation: read
+          - principal: certificate:CN=bob,OU=Engineering,O=Example Corp
+            operation: write
+
+      - name: topic2
+        consumer_group: group2
+        config:
+          partitions: 5
+          replication_factor: 3
+          retention_ms: 172800000 # 2 days
+        acl:
+          - principal: certificate:CN=charlie,OU=Engineering,O=Example Corp
+            operation: readwrite
+          - principal: certificate:CN=delta,OU=Engineering,O=Example Corp
+            operation: write
+
+  - name: prod
+    security_protocol: SASL_SSL
+    topics:
+      - name: topic1
+        consumer_group: group1
+        config:
+          partitions: 5
+          replication_factor: 3
+          retention_ms: 604800000 # 7 days
+        acl:
+          - principal: certificate:CN=alice,OU=Engineering,O=Example Corp
+            operation: read
+          - principal: certificate:CN=bob,OU=Engineering,O=Example Corp
+            operation: write
+
+      - name: topic2
+        consumer_group: group2
+        config:
+          partitions: 10
+          replication_factor: 3
+          retention_ms: 2592000000 # 30 days
+        acl:
+          - principal: certificate:CN=charlie,OU=Engineering,O=Example Corp
+            operation: readwrite
+          - principal: certificate:CN=delta,OU=Engineering,O=Example Corp
+            operation: write
